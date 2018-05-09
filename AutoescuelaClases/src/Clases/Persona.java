@@ -14,21 +14,22 @@ public  abstract class Persona {
     protected  String dni;
     protected  String fechaNacimiento;
     protected  String premisosPosee;
+    protected  String contraseña;
     protected  int telefono;
 
-    public Persona(String nombre, String dni, String fechaNacimiento, String premisosPosee, int telefono) {
+    public Persona(String nombre, String dni, String fechaNacimiento, String premisosPosee, String contraseña, int telefono) {
         this.nombre = nombre;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
         this.premisosPosee = premisosPosee;
+        this.contraseña = contraseña;
         this.telefono = telefono;
     }
 
     @Override
     public String toString() {
-        return "nombre= " + getNombre() + ", dni= " + getDni() + ", fechaNacimiento= " + getFechaNacimiento() + ", premisosPosee= " + getPremisosPosee() + ", telefono= " + getTelefono();
+        return "nombre=" + nombre + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", premisosPosee=" + premisosPosee + ", contrase\u00f1a=" + contraseña + ", telefono=" + telefono;
     }
-
     /**
      * @return the nombre
      */

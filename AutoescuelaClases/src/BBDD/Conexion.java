@@ -54,7 +54,7 @@ public class Conexion {
             System.out.println("Fallo al desconectar de la BBDD");
         }
     }
-    public ArrayList<Persona> consultarPersona() {
+    public ArrayList<Persona> consultarPersonasUsuarioContraseña() {
         ArrayList<Persona> vPersona = null;
         try {
             Statement st;
@@ -77,7 +77,7 @@ public class Conexion {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Fallo al ....");
         }
         
         return vPersona ; 

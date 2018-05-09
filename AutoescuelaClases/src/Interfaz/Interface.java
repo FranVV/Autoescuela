@@ -10,5 +10,5 @@ package Interfaz;
  * @author alumno
  */
 public interface Interface {
-    
+    public void comprobarClases();
 }

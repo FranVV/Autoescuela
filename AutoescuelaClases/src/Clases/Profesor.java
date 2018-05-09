@@ -9,7 +9,7 @@ package Clases;
  *
  * @author alumno
  */
-public final class Profesor extends Persona{
+public final class Profesor extends Persona implements Interfaz.Interface{
     private boolean admin;
     private Vehiculo vVehiculo;
 
@@ -50,6 +50,11 @@ public final class Profesor extends Persona{
      */
     public void setvVehiculo(Vehiculo vVehiculo) {
         this.vVehiculo = vVehiculo;
+    }
+
+    @Override
+    public void comprobarClases() {
+        
     }
     
     

@@ -13,11 +13,17 @@ public final class Profesor extends Persona implements Interfaz.Interface{
     private boolean admin;
     private Vehiculo vVehiculo;
 
-    public Profesor(boolean admin, Vehiculo vVehiculo, String nombre, String dni, String fechaNacimiento, String premisosPosee, int telefono) {
-        super(nombre, dni, fechaNacimiento, premisosPosee, telefono);
+    public Profesor(String contraseña, String usuario) {
+        super(usuario, null, null, null, contraseña, 0);
+    }
+
+    public Profesor(boolean admin, Vehiculo vVehiculo, String nombre, String dni, String fechaNacimiento, String premisosPosee, String contraseña, int telefono) {
+        super(nombre, dni, fechaNacimiento, premisosPosee, contraseña, telefono);
         this.admin = admin;
         this.vVehiculo = vVehiculo;
     }
+
+    
 
     @Override
     public String toString() {

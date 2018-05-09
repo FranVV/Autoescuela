@@ -9,8 +9,10 @@ package BBDD;
 import Clases.Alumno;
 import Clases.Persona;
 import Clases.Profesor;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,34 +56,30 @@ public class Conexion {
             System.out.println("Fallo al desconectar de la BBDD");
         }
     }
-    public ArrayList<Persona> consultarPersonasUsuarioContraseña() {
-        ArrayList<Persona> vPersona = null;
+    public boolean consultarPersonasUsuarioContraseña(String nombre, String pass) {
+        boolean encontrado =false;
         try {
-            Statement st;
+            PreparedStatement st;
             conectar();
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from persona;");
+            st = con.prepareStatement("Select nombre,contraseña from persona where nombre = ?;");
+            st.setString(1, nombre);
+            ResultSet rs = st.executeQuery();
                             
             while (rs.next()) {
-                if (rs.getBoolean("admin")) {
-                    Profesor nuevoP = new Profesor(rs.getBoolean("admin"), vVehiculo, rs.getString("nombre"), rs.getString("dni"), rs.getString("fechaNacimiento"), rs.getString("permisosPosee"), rs.getString("ntelefono"));
-                    vPersona.add(nuevoP);
-                }else{
-                    Alumno nuevoA= new Alumno(rs.getString("correo"), rs.getInt("id"), url, url, usuario, url, 0);
-                   vPersona.add(nuevoA); 
-                }
+                    if (rs.getString(2).equalsIgnoreCase(pass)){
+                        encontrado =  true;
+                    }
+                        
             }
             desconectar();
-            
-            
-            
-            
         } catch (SQLException ex) {
-            System.out.println("Fallo al ....");
+            System.out.println("Fallo al consultar los usuarios y contraseñas");
         }
         
-        return vPersona ; 
+        return encontrado ; 
     }
+
+    
     
     
 }

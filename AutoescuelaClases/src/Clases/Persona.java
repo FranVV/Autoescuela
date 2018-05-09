@@ -10,12 +10,12 @@ package Clases;
  * @author alumno
  */
 public  abstract class Persona {
-    protected String nombre;
-    protected  String dni;
-    protected  String fechaNacimiento;
-    protected  String premisosPosee;
-    protected  String contraseña;
-    protected  int telefono;
+    private String nombre;
+    private  String dni;
+    private  String fechaNacimiento;
+    private  String premisosPosee;
+    private  String contraseña;
+    private  int telefono;
 
     public Persona(String nombre, String dni, String fechaNacimiento, String premisosPosee, String contraseña, int telefono) {
         this.nombre = nombre;
@@ -28,7 +28,7 @@ public  abstract class Persona {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", premisosPosee=" + premisosPosee + ", contrase\u00f1a=" + contraseña + ", telefono=" + telefono;
+        return "nombre=" + getNombre() + ", dni=" + getDni() + ", fechaNacimiento=" + getFechaNacimiento() + ", premisosPosee=" + getPremisosPosee() + ", contrase\u00f1a=" + getContraseña() + ", telefono=" + getTelefono();
     }
     /**
      * @return the nombre
@@ -98,6 +98,20 @@ public  abstract class Persona {
      */
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    /**
+     * @return the contraseña
+     */
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    /**
+     * @param contraseña the contraseña to set
+     */
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
     
     

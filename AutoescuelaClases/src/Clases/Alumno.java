@@ -13,11 +13,13 @@ public final class Alumno extends Persona{
     private String correo;
     private int id;
 
-    public Alumno(String correo, int id, String nombre, String dni, String fechaNacimiento, String premisosPosee, int telefono) {
-        super(nombre, dni, fechaNacimiento, premisosPosee, telefono);
+    public Alumno(String correo, int id, String nombre, String dni, String fechaNacimiento, String premisosPosee, String contraseña, int telefono) {
+        super(nombre, dni, fechaNacimiento, premisosPosee, contraseña, telefono);
         this.correo = correo;
         this.id = id;
     }
+
+    
 
     @Override
     public String toString() {

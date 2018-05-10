@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,6 +78,28 @@ public class Conexion {
         
         return encontrado ; 
     }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretos( String tabla, String campo) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+";");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add(rs.getString(1));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
+    
 
     
     

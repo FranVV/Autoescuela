@@ -99,6 +99,48 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretosmasTipo( String tabla, String campo, String condicion) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where tipo='"+condicion+"';");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add(rs.getString(1));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
+    public ArrayList<String> eliminar( String tabla, String campo, String condicion) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where tipo='"+condicion+"';");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add(rs.getString(1));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
     
 
     

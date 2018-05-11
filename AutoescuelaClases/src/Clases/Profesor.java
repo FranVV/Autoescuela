@@ -59,8 +59,11 @@ public final class Profesor extends Persona implements Interfaz.Interface{
     }
 
     @Override
-    public void comprobarClases() {
+    public boolean comprobarClases() {
+        boolean bandera= true;
         
+        
+        return bandera;
     }
     
     

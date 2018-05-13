@@ -120,30 +120,70 @@ public class Conexion {
         
         return vMatriculas ; 
     }
-    public ArrayList<String> eliminar( String tabla, String campo, String condicion) {
-        ArrayList<String> vMatriculas = new ArrayList<>();
+    public boolean eliminar( String tabla,String condicion,String dato) {
+        boolean bandera= false;
         try {
             conectar();
             PreparedStatement pt;
             
-            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where tipo='"+condicion+"';");
+            pt = con.prepareStatement("DELETE FROM "+tabla+" WHERE "+condicion+"='"+dato+"';");
             
-            ResultSet rs = pt.executeQuery();
-                            
-            while (rs.next()) {
-                    vMatriculas.add(rs.getString(1));
-                        
+            int rs = pt.executeUpdate();
+              
+            if(rs>0){
+             bandera= true;   
             }
+            
             desconectar();
         } catch (SQLException ex) {
-            System.out.println("Fallo al consultar los campos de la tabla");
+            System.out.println("Fallo al eliminar "+tabla);
         }
         
-        return vMatriculas ; 
+        return bandera ; 
     }
+    public boolean insertarDatosVehiculo( String matricula,String modelo,int potencia, String tipo) {
+        boolean bandera= false;
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("INSERT INTO `vehiculo`(`matricula`, `modelo`, `potencia`, `tipo`) VALUES ('"+matricula+"','"+modelo+"',"+potencia+",'"+tipo+"');");
+            
+            int rs = pt.executeUpdate();
+              
+            if(rs>0){
+             bandera= true;   
+            }
+            
+            desconectar();
+        } catch (SQLException ex) { 
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bandera ; 
+    }
+   
     
+    public boolean insertarDatosPersona( String nombre,String dni,String fechanacimiento, String permisos,int tlf,String tipo,String correo,int id,boolean admin,String contraseña) {
+        boolean bandera= false;
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("INSERT INTO `persona`(`nombre`, `dni`, `fechaNacimiento`, `permisosPosee`, `nTelefono`, `tipo`, `correo`, `id`, `admin`, `contraseña`) VALUES ('"+nombre+"','"+dni+"','"+fechanacimiento+"','"+permisos+"',"+tlf+",'"+tipo+"','"+correo+"',"+id+","+admin+",'"+contraseña+"');");
+            
+            int rs = pt.executeUpdate();
+              
+            if(rs>0){
+             bandera= true;   
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bandera ; 
+    }
 
-    
-    
-    
 }

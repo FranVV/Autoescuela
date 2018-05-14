@@ -99,6 +99,76 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretosNombreAlumno( String tabla, String campo, String nombre) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where nombre='"+nombre+"';");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                if(rs.getString(6).equalsIgnoreCase("Alumno")){
+                    vMatriculas.add("Nombre: "+rs.getString(1)+" | ID: "+rs.getString(8));
+                } else{
+                    vMatriculas.add("EL nombre introducido no"+"\n" +" pertenece a un alumno");
+                } 
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretosNombreProfesor( String tabla, String campo, String nombre) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where nombre='"+nombre+"';");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                if(rs.getString(6).equalsIgnoreCase("Profesor")){
+                    vMatriculas.add("Nombre: "+rs.getString(1)+" | DNI: "+rs.getString(2));
+                } else{
+                    vMatriculas.add("EL nombre introducido no"+"\n" +" pertenece a un profesor");
+                }
+                
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretosporMatricula( String tabla, String campo, String matricula) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where matricula='"+matricula+"';");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add("Matricula: "+rs.getString(1)+" | Modelo: "+rs.getString(2)+" | Cilindrada: "+rs.getString(3)+" | Tipo camion:"+rs.getString(4));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
     public ArrayList<String> mostrarDatosTablaporCaposconcretosmasTipo( String tabla, String campo, String condicion) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {

@@ -39,10 +39,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
         }
         jComboBoxidalumno.removeAllItems();
          jComboBoxidalumno.addItem("Alumnos");
-        ArrayList<String> vIDAlumno = con.mostrarDatosTablaporCaposconcretosmasTipo("persona","id","alumno");
+        ArrayList<String> vIDAlumno = con.mostrarDatosTablaporCaposconcretosmasTipoTeorica("persona","id","alumno",true);
         for (int i = 0; i < vIDAlumno.size(); i++) {
             jComboBoxidalumno.addItem(vIDAlumno.get(i));
         }
+        
     }
 
     
@@ -58,6 +59,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreamostrarvehiculos = new javax.swing.JTextArea();
+        jMenu1 = new javax.swing.JMenu();
         jPanel3 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jComboBoxidalumno = new javax.swing.JComboBox<>();
@@ -78,18 +80,24 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextAreamostrarprofesor = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButtondesconectar = new javax.swing.JButton();
         jButtonactualizar = new javax.swing.JButton();
         jButtonsalir = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         jTextAreamostrarvehiculos.setEditable(false);
         jTextAreamostrarvehiculos.setColumns(20);
         jTextAreamostrarvehiculos.setLineWrap(true);
         jTextAreamostrarvehiculos.setRows(5);
         jScrollPane1.setViewportView(jTextAreamostrarvehiculos);
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,28 +242,65 @@ public class VentanaProfesor extends javax.swing.JFrame {
                     .addComponent(jLabel23)))
         );
 
-        jLabel2.setText("Asignar Clase");
-
-        jCalendar1.setBorder(javax.swing.BorderFactory.createTitledBorder("Asignar Fecha"));
-
-        jButtondesconectar.setText("Desconectar");
+        jLabel2.setText("Asignar Clases Practicas");
 
         jButtonactualizar.setText("Actualizar");
+        jButtonactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonactualizarActionPerformed(evt);
+            }
+        });
 
         jButtonsalir.setText("Salir");
+        jButtonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonsalirActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Título 5", "Título 6"
             }
         ));
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
+
+        jMenu2.setText("Opciones");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Gestion Alumnos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Desconectar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,30 +310,24 @@ public class VentanaProfesor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 835, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonactualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonsalir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtondesconectar)
-                        .addGap(30, 30, 30))
+                        .addComponent(jButtonsalir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(524, 524, 524)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane5)
-                        .addContainerGap())))
+                        .addGap(503, 503, 503)
+                        .addComponent(jLabel2)
+                        .addGap(0, 476, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,11 +339,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtondesconectar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -328,6 +366,33 @@ public class VentanaProfesor extends javax.swing.JFrame {
         String nombre = jTextFieldbuscarprofesro.getText();
         jTextAreamostrarprofesor.setText(con.mostrarDatosTablaporCaposconcretosNombreProfesor("persona", "*", nombre).toString());
     }//GEN-LAST:event_jTextFieldbuscarprofesroFocusLost
+
+    private void jButtonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonsalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonsalirActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        VentanaGestionAlumnos ventana = new VentanaGestionAlumnos();
+        ventana.setLocationRelativeTo(this);
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Login ventan = new Login();
+        ventan.setLocationRelativeTo(this);
+        ventan.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButtonactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizarActionPerformed
+        
+        VentanaProfesor ventan = new VentanaProfesor();
+        ventan.setLocationRelativeTo(this);
+        ventan.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonactualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,7 +432,6 @@ public class VentanaProfesor extends javax.swing.JFrame {
     private Conexion con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonactualizar;
-    private javax.swing.JButton jButtondesconectar;
     private javax.swing.JButton jButtonsalir;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBoxdniProfesor;
@@ -379,15 +443,21 @@ public class VentanaProfesor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextAreamostraalumno;
     private javax.swing.JTextArea jTextAreamostrarprofesor;
     private javax.swing.JTextArea jTextAreamostrarvehiculos;

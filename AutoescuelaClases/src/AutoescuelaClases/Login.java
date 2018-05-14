@@ -48,6 +48,11 @@ public class Login extends javax.swing.JFrame {
         jLabelusuario.setText("Usuario:");
 
         jButtonsalir.setText("Salir");
+        jButtonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonsalirActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Entrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +142,10 @@ public class Login extends javax.swing.JFrame {
          }    
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButtonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonsalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonsalirActionPerformed
    
     /**
              * @param args the command line arguments

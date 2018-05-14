@@ -190,6 +190,27 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    public ArrayList<String> mostrarDatosTablaporCaposconcretosmasTipoTeorica( String tabla, String campo, String condicion, boolean condicion2) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where tipo='"+condicion+"' and teorica="+condicion2+";");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add(rs.getString(1));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
     public boolean eliminar( String tabla,String condicion,String dato) {
         boolean bandera= false;
         try {
@@ -240,7 +261,7 @@ public class Conexion {
             conectar();
             PreparedStatement pt;
             
-            pt = con.prepareStatement("INSERT INTO `persona`(`nombre`, `dni`, `fechaNacimiento`, `permisosPosee`, `nTelefono`, `tipo`, `correo`, `id`, `admin`, `contraseña`) VALUES ('"+nombre+"','"+dni+"','"+fechanacimiento+"','"+permisos+"',"+tlf+",'"+tipo+"','"+correo+"',"+id+","+admin+",'"+contraseña+"');");
+            pt = con.prepareStatement("INSERT INTO `persona`(`nombre`, `dni`, `fechaNacimiento`, `permisosPosee`, `nTelefono`, `tipo`, `correo`, `id`, `admin`, `contraseña`, `teorica`, `practica`) VALUES ('"+nombre+"','"+dni+"','"+fechanacimiento+"','"+permisos+"',"+tlf+",'"+tipo+"','"+correo+"',"+id+","+admin+",'"+contraseña+"',false,flase);");
             
             int rs = pt.executeUpdate();
               

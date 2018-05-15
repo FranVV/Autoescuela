@@ -85,6 +85,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButtonactualizar1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -258,6 +259,15 @@ public class VentanaProfesor extends javax.swing.JFrame {
             }
         });
 
+        jCalendar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCalendar1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jCalendar1MouseReleased(evt);
+            }
+        });
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -276,6 +286,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable2);
+
+        jButtonactualizar1.setText("Actualizar");
+        jButtonactualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonactualizar1ActionPerformed(evt);
+            }
+        });
 
         jMenu2.setText("Opciones");
 
@@ -312,6 +329,8 @@ public class VentanaProfesor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonactualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonactualizar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonsalir))
                     .addGroup(layout.createSequentialGroup()
@@ -344,7 +363,8 @@ public class VentanaProfesor extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonactualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -387,12 +407,25 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizarActionPerformed
-        
         VentanaProfesor ventan = new VentanaProfesor();
         ventan.setLocationRelativeTo(this);
         ventan.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonactualizarActionPerformed
+
+    private void jButtonactualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonactualizar1ActionPerformed
+
+    private void jCalendar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCalendar1MousePressed
+        String fecha = jCalendar1.getDate().toString();
+        System.out.println(fecha);
+                
+    }//GEN-LAST:event_jCalendar1MousePressed
+
+    private void jCalendar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCalendar1MouseReleased
+       
+    }//GEN-LAST:event_jCalendar1MouseReleased
 
     /**
      * @param args the command line arguments
@@ -432,6 +465,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
     private Conexion con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonactualizar;
+    private javax.swing.JButton jButtonactualizar1;
     private javax.swing.JButton jButtonsalir;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBoxdniProfesor;

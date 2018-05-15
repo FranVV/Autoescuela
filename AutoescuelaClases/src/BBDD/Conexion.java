@@ -291,7 +291,7 @@ public class Conexion {
             pt.setBoolean(1, teorica);
             pt.setBoolean(2, practica);
             pt.setString(3, rs.getString(1));
-             int rss = pt.executeUpdate();
+            int rss = pt.executeUpdate();
             if(rss>0){
              bandera= true;   
             }

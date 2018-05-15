@@ -93,6 +93,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="jButtonactualizar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonactualizar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonsalir" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -133,6 +135,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonactualizar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jButtonsalir" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jButtonactualizar1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -428,6 +431,10 @@
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCalendar1MousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCalendar1MouseReleased"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -452,5 +459,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButtonactualizar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Actualizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonactualizar1ActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

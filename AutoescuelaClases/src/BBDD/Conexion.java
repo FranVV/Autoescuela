@@ -277,5 +277,31 @@ public class Conexion {
         
         return bandera ; 
     }
+    
+    public boolean updateAlumnoTeoricaPractica( boolean teorica,boolean practica, int id) {
+        boolean bandera= false;
+        try {
+            conectar();
+            PreparedStatement pt;
+            pt = con.prepareStatement("Select dni from persona where id=?;");
+            pt.setInt(1, id);      
+            ResultSet rs = pt.executeQuery();
+            rs.next();
+            pt = con.prepareStatement("UPDATE  persona SET  teorica = ? ,practica = ? WHERE dni = ?;");
+            pt.setBoolean(1, teorica);
+            pt.setBoolean(2, practica);
+            pt.setString(3, rs.getString(1));
+             int rss = pt.executeUpdate();
+            if(rss>0){
+             bandera= true;   
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bandera ; 
+    }
 
 }

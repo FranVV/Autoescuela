@@ -7,6 +7,7 @@ package AutoescuelaClases;
 
 import BBDD.Conexion;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,10 +54,10 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
         jTextAreamostraalumno = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         buttonGroupPractica = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButtonteoricatrue = new javax.swing.JRadioButton();
+        jRadioButtonteoricafalse = new javax.swing.JRadioButton();
+        jRadioButtonpracticatrue = new javax.swing.JRadioButton();
+        jRadioButtonpracticafalse = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -85,17 +86,19 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
 
         buttonGroupPractica.setText("Parctica:");
 
-        buttonGroupteorica.add(jRadioButton1);
-        jRadioButton1.setText("True");
+        buttonGroupteorica.add(jRadioButtonteoricatrue);
+        jRadioButtonteoricatrue.setText("True");
 
-        buttonGroupteorica.add(jRadioButton2);
-        jRadioButton2.setText("False");
+        buttonGroupteorica.add(jRadioButtonteoricafalse);
+        jRadioButtonteoricafalse.setSelected(true);
+        jRadioButtonteoricafalse.setText("False");
 
-        buttonGrouppractica.add(jRadioButton3);
-        jRadioButton3.setText("True");
+        buttonGrouppractica.add(jRadioButtonpracticatrue);
+        jRadioButtonpracticatrue.setText("True");
 
-        buttonGrouppractica.add(jRadioButton4);
-        jRadioButton4.setText("False");
+        buttonGrouppractica.add(jRadioButtonpracticafalse);
+        jRadioButtonpracticafalse.setSelected(true);
+        jRadioButtonpracticafalse.setText("False");
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,15 +140,15 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(jRadioButtonteoricatrue)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton2))
+                                        .addComponent(jRadioButtonteoricafalse))
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(buttonGroupPractica, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton3)
+                                        .addComponent(jRadioButtonpracticatrue)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton4))))
+                                        .addComponent(jRadioButtonpracticafalse))))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(56, 56, 56)
                                 .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,13 +177,13 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(jRadioButtonteoricatrue)
+                            .addComponent(jRadioButtonteoricafalse))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jRadioButton3)
-                                .addComponent(jRadioButton4))
+                                .addComponent(jRadioButtonpracticatrue)
+                                .addComponent(jRadioButtonpracticafalse))
                             .addComponent(buttonGroupPractica, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -226,7 +229,19 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+       boolean teorica= false;
+       boolean practica= false;
+       if(jRadioButtonteoricatrue.isSelected()){
+           teorica= true;
+           if(jRadioButtonpracticatrue.isSelected()){
+               practica= true;
+           }
+       }
+        boolean InsertardatosAlumno=con.updateAlumnoTeoricaPractica(teorica, practica, Integer.parseInt(jComboBoxidalumno.getSelectedItem().toString()));
+        
+        if(InsertardatosAlumno){
+            JOptionPane.showMessageDialog(null,"La operacion se ha realizado con exito");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -276,10 +291,10 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButtonpracticafalse;
+    private javax.swing.JRadioButton jRadioButtonpracticatrue;
+    private javax.swing.JRadioButton jRadioButtonteoricafalse;
+    private javax.swing.JRadioButton jRadioButtonteoricatrue;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JTextArea jTextAreamostraalumno;
     private javax.swing.JTextField jTextFieldbuscarAlumno;

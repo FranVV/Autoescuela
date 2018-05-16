@@ -8,6 +8,7 @@ package BBDD;
 
 
 import Clases.Alumno;
+import Clases.Clase;
 import Clases.Persona;
 import Clases.Profesor;
 
@@ -18,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -78,6 +80,27 @@ public class Conexion {
         }
         
         return encontrado ; 
+    }
+    public ArrayList<Clase> consultarClases(String fecha) {
+        ArrayList<Clase> vClase= new ArrayList<>();
+        try {
+            PreparedStatement st;
+            conectar();
+            st = con.prepareStatement("Select * from clase where fecha=?");
+            st.setDate(1, java.sql.Date.valueOf(fecha));
+            
+            ResultSet rs = st.executeQuery();
+                            
+            while (rs.next()) {
+                    vClase.add(new Clase(rs.getString(3),rs.getString(4) , rs.getString(2), rs.getDate(1).toString(), rs.getInt(5), rs.getBoolean(6)));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los usuarios y contraseñas");
+        }
+        
+        return vClase; 
     }
     public ArrayList<String> mostrarDatosTablaporCaposconcretos( String tabla, String campo) {
         ArrayList<String> vMatriculas = new ArrayList<>();
@@ -303,5 +326,7 @@ public class Conexion {
         
         return bandera ; 
     }
+
+    
 
 }

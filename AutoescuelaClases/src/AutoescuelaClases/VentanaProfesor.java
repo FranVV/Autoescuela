@@ -6,12 +6,17 @@
 package AutoescuelaClases;
 
 import BBDD.Conexion;
+import Clases.Clase;
 import Clases.Persona;
 import Clases.Vehiculo;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 
@@ -30,6 +35,21 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }
      public void configuracion(){
      con= new Conexion();
+     
+     jComboBoxselecionahora.removeAllItems();
+     jComboBoxselecionahora.addItem("Hora");
+     jComboBoxselecionahora.addItem("1 8:45 - 9:35");
+     jComboBoxselecionahora.addItem("2 9:40 - 10:30");
+     jComboBoxselecionahora.addItem("3 10:35 - 11:25");
+     jComboBoxselecionahora.addItem("4 Teorica ");
+     jComboBoxselecionahora.addItem("5 12:25 - 13:35");
+     jComboBoxselecionahora.addItem("6 13:40 - 14:30");
+     jComboBoxselecionahora.addItem("7 16:00 - 16:50");
+     jComboBoxselecionahora.addItem("8 16:55 - 17:45");
+     jComboBoxselecionahora.addItem("9 17:50 - 18:40");
+     jComboBoxselecionahora.addItem("10 18:45 - 19:35");
+     jComboBoxselecionahora.addItem("11 Teorica ");
+     
      jComboBoxmatricula.removeAllItems();
         ArrayList<String> vMatriculas = con.mostrarDatosTablaporCaposconcretos("vehiculo","matricula");
         jComboBoxmatricula.addItem("Matriculas");
@@ -443,17 +463,28 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonactualizarActionPerformed
 
     private void jButtonaconfirmareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaconfirmareActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButtonaconfirmareActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jCalendar1.getCalendar() != null){
             Date fecha=this.jCalendar1.getCalendar().getTime();
-            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-            String fechaS = formato.format(fecha);
-            String dia= fechaS.substring(0, 2);
-            //ArrayList<String> cabecera = {dia};
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             
+            String fechaS = formato.format(fecha);
+        
+            String dia= fechaS.substring(0, 2);
+            System.out.println(fechaS);
+            //ArrayList<String> cabecera = {dia};
+            /*
+            Calendar calendario = GregorianCalendar.getInstance();
+Date fecha = calendario.getTime();
+System.out.println(fecha);
+SimpleDateFormat formatoDeFecha = new SimpleDateFormat(“dd/MM/yyyy”);
+System.out.println(formatoDeFecha.format(fecha));*/
+          
+                ArrayList<Clase> vCalse= con.consultarClases(fechaS);
+         
         }
        
           

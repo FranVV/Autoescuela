@@ -11,81 +11,95 @@ package Clases;
  */
 public class Clase {
 
-    private Alumno alumno;
-    private Profesor profesor;
-    private Vehiculo vehiculo;
-    private String calendario;
+    private String alumnodni;
+    private String profesordni;
+    private String matricula;
+    private String fecha;
+    private int hora;
     private boolean asignado;
 
-    public Clase(Alumno alumno, Profesor profesor, Vehiculo vehiculo, String calendario, boolean asignado) {
-        this.alumno = alumno;
-        this.profesor = profesor;
-        this.vehiculo = vehiculo;
-        this.calendario = calendario;
+    public Clase(String alumnodni, String profesordni, String matricula, String fecha, int hora, boolean asignado) {
+        this.alumnodni = alumnodni;
+        this.profesordni = profesordni;
+        this.matricula = matricula;
+        this.fecha = fecha;
+        this.hora = hora;
         this.asignado = asignado;
     }
 
-    
-
     @Override
     public String toString() {
-        return "alumno=" + getAlumno() + ", profesor=" + getProfesor() + ", vehiculo=" + getVehiculo() + ", calendario=" + getCalendario() + ", asignado=" + isAsignado();
+        return "alumnodni=" + getAlumnodni() + ", profesordni=" + getProfesordni() + ", matricula=" + getMatricula() + ", fecha=" + getFecha() + ", hora=" + getHora() + ", asignado=" + isAsignado();
     }
 
     /**
-     * @return the alumno
+     * @return the alumnodni
      */
-    public Alumno getAlumno() {
-        return alumno;
+    public String getAlumnodni() {
+        return alumnodni;
     }
 
     /**
-     * @param alumno the alumno to set
+     * @param alumnodni the alumnodni to set
      */
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public void setAlumnodni(String alumnodni) {
+        this.alumnodni = alumnodni;
     }
 
     /**
-     * @return the profesor
+     * @return the profesordni
      */
-    public Profesor getProfesor() {
-        return profesor;
+    public String getProfesordni() {
+        return profesordni;
     }
 
     /**
-     * @param profesor the profesor to set
+     * @param profesordni the profesordni to set
      */
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    public void setProfesordni(String profesordni) {
+        this.profesordni = profesordni;
     }
 
     /**
-     * @return the vehiculo
+     * @return the matricula
      */
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public String getMatricula() {
+        return matricula;
     }
 
     /**
-     * @param vehiculo the vehiculo to set
+     * @param matricula the matricula to set
      */
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     /**
-     * @return the calendario
+     * @return the fecha
      */
-    public String getCalendario() {
-        return calendario;
+    public String getFecha() {
+        return fecha;
     }
 
     /**
-     * @param calendario the calendario to set
+     * @param fecha the fecha to set
      */
-    public void setCalendario(String calendario) {
-        this.calendario = calendario;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the hora
+     */
+    public int getHora() {
+        return hora;
+    }
+
+    /**
+     * @param hora the hora to set
+     */
+    public void setHora(int hora) {
+        this.hora = hora;
     }
 
     /**
@@ -102,4 +116,5 @@ public class Clase {
         this.asignado = asignado;
     }
     
+   
 }

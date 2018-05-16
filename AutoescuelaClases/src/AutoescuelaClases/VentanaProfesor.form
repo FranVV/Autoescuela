@@ -91,10 +91,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jComboBoxselecionahora1" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonaborrar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButtonaconfirmare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonactualizar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonactualizar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonsalir" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -113,10 +116,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBoxselecionahora" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jCalendar1" max="32767" attributes="0"/>
+                          <Component id="jCalendar1" pref="247" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -135,8 +139,12 @@
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBoxselecionahora" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jButton1" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -145,7 +153,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonactualizar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jButtonsalir" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="jButtonactualizar1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jButtonaconfirmare" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jButtonaborrar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jComboBoxselecionahora1" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -463,12 +473,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonactualizar1">
+    <Component class="javax.swing.JButton" name="jButtonaconfirmare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Actualizar"/>
+        <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonactualizar1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonaconfirmareActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -480,6 +490,34 @@
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxselecionahora">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonaborrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Borrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonaborrarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxselecionahora1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

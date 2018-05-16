@@ -89,9 +89,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jButtonsalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButtonactualizar1 = new javax.swing.JButton();
+        jButtonaconfirmare = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        jComboBoxselecionahora = new javax.swing.JComboBox<>();
+        jButtonaborrar = new javax.swing.JButton();
+        jComboBoxselecionahora1 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -284,10 +287,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jButtonactualizar1.setText("Actualizar");
-        jButtonactualizar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonaconfirmare.setText("Confirmar");
+        jButtonaconfirmare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonactualizar1ActionPerformed(evt);
+                jButtonaconfirmareActionPerformed(evt);
             }
         });
 
@@ -295,6 +298,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButtonaborrar.setText("Borrar");
+        jButtonaborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonaborrarActionPerformed(evt);
             }
         });
 
@@ -331,10 +341,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jComboBoxselecionahora1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonaborrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonaconfirmare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonactualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonactualizar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonsalir))
                     .addComponent(jScrollPane2)
@@ -351,9 +364,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 136, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxselecionahora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -367,15 +381,20 @@ public class VentanaProfesor extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxselecionahora)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonactualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonaconfirmare, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonaborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxselecionahora1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -423,9 +442,9 @@ public class VentanaProfesor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonactualizarActionPerformed
 
-    private void jButtonactualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizar1ActionPerformed
+    private void jButtonaconfirmareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaconfirmareActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonactualizar1ActionPerformed
+    }//GEN-LAST:event_jButtonaconfirmareActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jCalendar1.getCalendar() != null){
@@ -440,6 +459,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
           
             
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonaborrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,13 +503,16 @@ public class VentanaProfesor extends javax.swing.JFrame {
     private Conexion con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonaborrar;
+    private javax.swing.JButton jButtonaconfirmare;
     private javax.swing.JButton jButtonactualizar;
-    private javax.swing.JButton jButtonactualizar1;
     private javax.swing.JButton jButtonsalir;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBoxdniProfesor;
     private javax.swing.JComboBox<String> jComboBoxidalumno;
     private javax.swing.JComboBox<String> jComboBoxmatricula;
+    private javax.swing.JComboBox<String> jComboBoxselecionahora;
+    private javax.swing.JComboBox<String> jComboBoxselecionahora1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;

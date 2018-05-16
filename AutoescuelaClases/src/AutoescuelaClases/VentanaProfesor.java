@@ -8,7 +8,12 @@ package AutoescuelaClases;
 import BBDD.Conexion;
 import Clases.Persona;
 import Clases.Vehiculo;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 /**
  *
@@ -82,10 +87,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonactualizar = new javax.swing.JButton();
         jButtonsalir = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButtonactualizar1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -259,15 +265,6 @@ public class VentanaProfesor extends javax.swing.JFrame {
             }
         });
 
-        jCalendar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jCalendar1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jCalendar1MouseReleased(evt);
-            }
-        });
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -291,6 +288,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jButtonactualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonactualizar1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Selecionar fecha");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -333,10 +337,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
                         .addComponent(jButtonactualizar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonsalir))
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(503, 503, 503)
                         .addComponent(jLabel2)
-                        .addGap(0, 476, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -344,8 +349,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 136, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -353,14 +361,17 @@ public class VentanaProfesor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,8 +384,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
     private void jComboBoxmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxmatriculaActionPerformed
        String matricula = jComboBoxmatricula.getSelectedItem().toString();
-       jTextAreamostravehiculo.setText(con.mostrarDatosTablaporCaposconcretosporMatricula("vehiculo", "*", matricula).toString());
-       
+       jTextAreamostravehiculo.setText(con.mostrarDatosTablaporCaposconcretosporMatricula("vehiculo", "*", matricula).toString()); 
     }//GEN-LAST:event_jComboBoxmatriculaActionPerformed
 
     private void jTextFieldbuscarAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldbuscarAlumnoFocusLost
@@ -417,15 +427,19 @@ public class VentanaProfesor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonactualizar1ActionPerformed
 
-    private void jCalendar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCalendar1MousePressed
-        String fecha = jCalendar1.getDate().toString();
-        System.out.println(fecha);
-                
-    }//GEN-LAST:event_jCalendar1MousePressed
-
-    private void jCalendar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCalendar1MouseReleased
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(jCalendar1.getCalendar() != null){
+            Date fecha=this.jCalendar1.getCalendar().getTime();
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            String fechaS = formato.format(fecha);
+            String dia= fechaS.substring(0, 2);
+            //ArrayList<String> cabecera = {dia};
+            
+        }
        
-    }//GEN-LAST:event_jCalendar1MouseReleased
+          
+            
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,8 +476,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
             }
         });
     }
+    private DefaultTableModel modelo;
     private Conexion con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonactualizar;
     private javax.swing.JButton jButtonactualizar1;
     private javax.swing.JButton jButtonsalir;

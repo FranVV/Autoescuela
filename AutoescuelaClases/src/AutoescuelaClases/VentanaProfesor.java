@@ -17,7 +17,12 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 
 /**
@@ -33,45 +38,44 @@ public class VentanaProfesor extends javax.swing.JFrame {
         initComponents();
         configuracion();
     }
-     public void configuracion(){
-     con= new Conexion();
-     
-     jComboBoxselecionahora.removeAllItems();
-     jComboBoxselecionahora.addItem("Hora");
-     jComboBoxselecionahora.addItem("1 8:45 - 9:35");
-     jComboBoxselecionahora.addItem("2 9:40 - 10:30");
-     jComboBoxselecionahora.addItem("3 10:35 - 11:25");
-     jComboBoxselecionahora.addItem("4 Teorica ");
-     jComboBoxselecionahora.addItem("5 12:25 - 13:35");
-     jComboBoxselecionahora.addItem("6 13:40 - 14:30");
-     jComboBoxselecionahora.addItem("7 16:00 - 16:50");
-     jComboBoxselecionahora.addItem("8 16:55 - 17:45");
-     jComboBoxselecionahora.addItem("9 17:50 - 18:40");
-     jComboBoxselecionahora.addItem("10 18:45 - 19:35");
-     jComboBoxselecionahora.addItem("11 Teorica ");
-     
-     jComboBoxmatricula.removeAllItems();
-        ArrayList<String> vMatriculas = con.mostrarDatosTablaporCaposconcretos("vehiculo","matricula");
+
+    public void configuracion() {
+        con = new Conexion();
+        selecionarDia();
+        jComboBoxselecionahora.removeAllItems();
+        jComboBoxselecionahora.addItem("Hora");
+        jComboBoxselecionahora.addItem("1 8:45 - 9:35");
+        jComboBoxselecionahora.addItem("2 9:40 - 10:30");
+        jComboBoxselecionahora.addItem("3 10:35 - 11:25");
+        jComboBoxselecionahora.addItem("4 Teorica ");
+        jComboBoxselecionahora.addItem("5 12:25 - 13:35");
+        jComboBoxselecionahora.addItem("6 13:40 - 14:30");
+        jComboBoxselecionahora.addItem("7 16:00 - 16:50");
+        jComboBoxselecionahora.addItem("8 16:55 - 17:45");
+        jComboBoxselecionahora.addItem("9 17:50 - 18:40");
+        jComboBoxselecionahora.addItem("10 18:45 - 19:35");
+        jComboBoxselecionahora.addItem("11 Teorica ");
+
+        jComboBoxmatricula.removeAllItems();
+        ArrayList<String> vMatriculas = con.mostrarDatosTablaporCaposconcretos("vehiculo", "matricula");
         jComboBoxmatricula.addItem("Matriculas");
         for (int i = 0; i < vMatriculas.size(); i++) {
             jComboBoxmatricula.addItem(vMatriculas.get(i));
         }
         jComboBoxdniProfesor.removeAllItems();
-        ArrayList<String> vDniProfesor = con.mostrarDatosTablaporCaposconcretosmasTipo("persona","dni","profesor");
+        ArrayList<String> vDniProfesor = con.mostrarDatosTablaporCaposconcretosmasTipo("persona", "dni", "profesor");
         jComboBoxdniProfesor.addItem("Profesores");
         for (int i = 0; i < vDniProfesor.size(); i++) {
             jComboBoxdniProfesor.addItem(vDniProfesor.get(i));
         }
         jComboBoxidalumno.removeAllItems();
-         jComboBoxidalumno.addItem("Alumnos");
-        ArrayList<String> vIDAlumno = con.mostrarDatosTablaporCaposconcretosmasTipoTeorica("persona","id","alumno",true);
+        jComboBoxidalumno.addItem("Alumnos");
+        ArrayList<String> vIDAlumno = con.mostrarDatosTablaporCaposconcretosmasTipoTeorica("persona", "id", "alumno", true);
         for (int i = 0; i < vIDAlumno.size(); i++) {
             jComboBoxidalumno.addItem(vIDAlumno.get(i));
         }
-        
-    }
 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +112,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jButtonactualizar = new javax.swing.JButton();
         jButtonsalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableclases = new javax.swing.JTable();
         jButtonaconfirmare = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
@@ -288,9 +292,8 @@ public class VentanaProfesor extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableclases.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -305,7 +308,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Título 5", "Título 6"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableclases);
 
         jButtonaconfirmare.setText("Confirmar");
         jButtonaconfirmare.addActionListener(new java.awt.event.ActionListener() {
@@ -407,7 +410,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -422,8 +425,8 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxmatriculaActionPerformed
-       String matricula = jComboBoxmatricula.getSelectedItem().toString();
-       jTextAreamostravehiculo.setText(con.mostrarDatosTablaporCaposconcretosporMatricula("vehiculo", "*", matricula).toString()); 
+        String matricula = jComboBoxmatricula.getSelectedItem().toString();
+        jTextAreamostravehiculo.setText(con.mostrarDatosTablaporCaposconcretosporMatricula("vehiculo", "*", matricula).toString());
     }//GEN-LAST:event_jComboBoxmatriculaActionPerformed
 
     private void jTextFieldbuscarAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldbuscarAlumnoFocusLost
@@ -452,7 +455,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
         ventan.setLocationRelativeTo(this);
         ventan.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizarActionPerformed
@@ -463,34 +466,80 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonactualizarActionPerformed
 
     private void jButtonaconfirmareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaconfirmareActionPerformed
-       
+
     }//GEN-LAST:event_jButtonaconfirmareActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jCalendar1.getCalendar() != null){
-            Date fecha=this.jCalendar1.getCalendar().getTime();
+        if (jCalendar1.getCalendar() != null) {
+            Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            
-            String fechaS = formato.format(fecha);
-        
-            String dia= fechaS.substring(0, 2);
-            System.out.println(fechaS);
-            //ArrayList<String> cabecera = {dia};
-            /*
-            Calendar calendario = GregorianCalendar.getInstance();
-Date fecha = calendario.getTime();
-System.out.println(fecha);
-SimpleDateFormat formatoDeFecha = new SimpleDateFormat(“dd/MM/yyyy”);
-System.out.println(formatoDeFecha.format(fecha));*/
-          
-                ArrayList<Clase> vCalse= con.consultarClases(fechaS);
-         
-        }
-       
-          
-            
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+            String fechaS = formato.format(fecha);
+
+            String dia = fechaS.substring(8, 10);
+            System.out.println(fechaS);
+            vClase = con.consultarClases(fechaS);
+            mostrarTabla(dia);
+
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public  void mostrarTabla(String dia) {
+    DefaultTableModel modelo;
+    String cabecera[]={"",dia,calculardia(dia, 1),calculardia(dia, 2),calculardia(dia, 3),calculardia(dia, 4)};
+    String datos[][]= new String[9][6];
+    datos[0][0]="                              1 -> 8:45 - 9:35";
+    datos[1][0]="                              2 -> 9:40 - 10:30";
+    datos[2][0]="                              3 -> 10:35 - 11:25";
+    datos[3][0]="                              4 -> 12:25 - 13:35";
+    datos[4][0]="                              5 -> 13:40 - 14:30";
+    datos[5][0]="                              6 -> 16:00 - 16:50";
+    datos[6][0]="                              7 -> 16:55 - 17:45";
+    datos[7][0]="                              8 -> 17:50 - 18:40";
+    datos[8][0]="                              9 -> 18:45 - 19:35";
+    int contador=0;    
+    for (int i = 0; i < datos.length; i++) {
+            for (int j = 1; j < datos[i].length; j++) {
+                    datos[i][j]=devolverdniVCalse(contador);
+                    contador++;
+            }
+            
+        }
+    
+    modelo= new DefaultTableModel(datos,cabecera);
+        jTableclases.setModel(modelo);
+        
+        
+       
+    }
+    public String devolverdniVCalse(int i) {
+        String dni="";
+        if(vClase.size()>i){
+            return vClase.get(i).getAlumnodni();
+        }
+        return dni;
+        
+    }
+    public  void selecionarDia() {
+    if (jCalendar1.getCalendar() != null) {
+            Date fecha = this.jCalendar1.getCalendar().getTime();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+            String fechaS = formato.format(fecha);
+
+            String dia = fechaS.substring(8, 10);
+            vClase = con.consultarClases(fechaS);
+            mostrarTabla(dia);
+
+        }
+    }
+    public  String calculardia(String dia, int n) {
+    int diaInt = Integer.parseInt(dia)+n;
+    dia=Integer.toString(diaInt);
+        return dia;
+    }
+    
     private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonaborrarActionPerformed
@@ -530,6 +579,7 @@ System.out.println(formatoDeFecha.format(fecha));*/
             }
         });
     }
+    private ArrayList<Clase> vClase;
     private DefaultTableModel modelo;
     private Conexion con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -564,7 +614,7 @@ System.out.println(formatoDeFecha.format(fecha));*/
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableclases;
     private javax.swing.JTextArea jTextAreamostraalumno;
     private javax.swing.JTextArea jTextAreamostrarprofesor;
     private javax.swing.JTextArea jTextAreamostrarvehiculos;

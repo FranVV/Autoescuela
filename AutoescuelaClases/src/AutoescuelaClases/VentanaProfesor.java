@@ -47,14 +47,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jComboBoxselecionahora.addItem("1 8:45 - 9:35");
         jComboBoxselecionahora.addItem("2 9:40 - 10:30");
         jComboBoxselecionahora.addItem("3 10:35 - 11:25");
-        jComboBoxselecionahora.addItem("4 Teorica ");
-        jComboBoxselecionahora.addItem("5 12:25 - 13:35");
-        jComboBoxselecionahora.addItem("6 13:40 - 14:30");
-        jComboBoxselecionahora.addItem("7 16:00 - 16:50");
-        jComboBoxselecionahora.addItem("8 16:55 - 17:45");
-        jComboBoxselecionahora.addItem("9 17:50 - 18:40");
-        jComboBoxselecionahora.addItem("10 18:45 - 19:35");
-        jComboBoxselecionahora.addItem("11 Teorica ");
+        jComboBoxselecionahora.addItem("4 12:25 - 13:35");
+        jComboBoxselecionahora.addItem("5 13:40 - 14:30");
+        jComboBoxselecionahora.addItem("6 16:00 - 16:50");
+        jComboBoxselecionahora.addItem("7 16:55 - 17:45");
+        jComboBoxselecionahora.addItem("8 17:50 - 18:40");
+        jComboBoxselecionahora.addItem("9 18:45 - 19:35");
 
         jComboBoxmatricula.removeAllItems();
         ArrayList<String> vMatriculas = con.mostrarDatosTablaporCaposconcretos("vehiculo", "matricula");
@@ -473,13 +471,11 @@ public class VentanaProfesor extends javax.swing.JFrame {
         if (jCalendar1.getCalendar() != null) {
             Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
             String fechaS = formato.format(fecha);
-
             String dia = fechaS.substring(8, 10);
-            System.out.println(fechaS);
             vClase = con.consultarClases(fechaS);
             mostrarTabla(dia);
+            jCalendar1.get
 
         }
 
@@ -499,24 +495,28 @@ public class VentanaProfesor extends javax.swing.JFrame {
     datos[7][0]="                              8 -> 17:50 - 18:40";
     datos[8][0]="                              9 -> 18:45 - 19:35";
     int contador=0;    
-    for (int i = 0; i < datos.length; i++) {
-            for (int j = 1; j < datos[i].length; j++) {
-                    datos[i][j]=devolverdniVCalse(contador);
-                    contador++;
-            }
-            
+   
+        System.out.println(vClase.size());
+    for(Clase c:vClase){
+        if(jCalendar1.getCalendar().){
+        datos[c.getHora()-1][Integer.parseInt(c.getFecha().substring(8, 10))-(Integer.parseInt(dia)-1)] =  c.getAlumnodni();
         }
-    
+    }
     modelo= new DefaultTableModel(datos,cabecera);
         jTableclases.setModel(modelo);
         
         
        
     }
-    public String devolverdniVCalse(int i) {
+    public String devolverdniVCalse(int hora, String dia) {
         String dni="";
-        if(vClase.size()>i){
+        /*if(vClase.size()>i){
             return vClase.get(i).getAlumnodni();
+        }*/
+        for(Clase c:vClase){
+            if (c.getHora()==hora && c.getFecha().substring(8, 10).equalsIgnoreCase(dia)){
+                return c.getAlumnodni();
+            }
         }
         return dni;
         

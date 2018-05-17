@@ -86,21 +86,30 @@ public class Conexion {
         try {
             PreparedStatement st;
             conectar();
-            st = con.prepareStatement("Select * from clase where fecha=?");
-            st.setDate(1, java.sql.Date.valueOf(fecha));
+            //Select * from clase where fecha between CAST(? AS DATE) AND CAST(? AS DATE)
+            st = con.prepareStatement("Select * from clase where fecha between ?  AND ? ;");//fecha entre hoy y 5 dias por delante
+ st.setDate(1, java.sql.Date.valueOf(fecha));
+            st.setDate(2, java.sql.Date.valueOf(fecha.substring(0, 8)+calculardia(fecha.substring(8, 10), 5)));
+            
             
             ResultSet rs = st.executeQuery();
                             
             while (rs.next()) {
-                    vClase.add(new Clase(rs.getString(3),rs.getString(4) , rs.getString(2), rs.getDate(1).toString(), rs.getInt(5), rs.getBoolean(6)));
+                    vClase.add(new Clase(rs.getString(3),rs.getString(4) , rs.getString(2), rs.getDate(1).toString(), rs.getInt(6), rs.getBoolean(5)));
                         
             }
             desconectar();
         } catch (SQLException ex) {
             System.out.println("Fallo al consultar los usuarios y contraseñas");
-        }
+       }
         
         return vClase; 
+    }
+    
+    private  String calculardia(String dia, int n) {
+    int diaInt = Integer.parseInt(dia)+n;
+    dia=Integer.toString(diaInt);
+        return dia;
     }
     public ArrayList<String> mostrarDatosTablaporCaposconcretos( String tabla, String campo) {
         ArrayList<String> vMatriculas = new ArrayList<>();

@@ -17,8 +17,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,7 +91,14 @@ public class Conexion {
             //Select * from clase where fecha between CAST(? AS DATE) AND CAST(? AS DATE)
             st = con.prepareStatement("Select * from clase where fecha between ?  AND ? ;");//fecha entre hoy y 5 dias por delante
  st.setDate(1, java.sql.Date.valueOf(fecha));
-            st.setDate(2, java.sql.Date.valueOf(fecha.substring(0, 8)+calculardia(fecha.substring(8, 10), 5)));
+            //Sumamos 5 dias a la fecha base
+           Calendar calendar = Calendar.getInstance();
+      calendar.setTime(java.sql.Date.valueOf(fecha)); 
+      calendar.add(Calendar.DAY_OF_YEAR, 4);
+            
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaS = formato.format(calendar.getTime());
+            st.setDate(2, java.sql.Date.valueOf(fechaS));
             
             
             ResultSet rs = st.executeQuery();

@@ -7,14 +7,13 @@ package AutoescuelaClases;
 
 import BBDD.Conexion;
 import Clases.Clase;
-import Clases.Persona;
-import Clases.Vehiculo;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+
+
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -474,55 +473,66 @@ public class VentanaProfesor extends javax.swing.JFrame {
             String fechaS = formato.format(fecha);
             String dia = fechaS.substring(8, 10);
             vClase = con.consultarClases(fechaS);
-            mostrarTabla(dia);
-            jCalendar1.get
+            mostrarTabla(fechaS);
 
         }
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
-    public  void mostrarTabla(String dia) {
-    DefaultTableModel modelo;
-    String cabecera[]={"",dia,calculardia(dia, 1),calculardia(dia, 2),calculardia(dia, 3),calculardia(dia, 4)};
-    String datos[][]= new String[9][6];
-    datos[0][0]="                              1 -> 8:45 - 9:35";
-    datos[1][0]="                              2 -> 9:40 - 10:30";
-    datos[2][0]="                              3 -> 10:35 - 11:25";
-    datos[3][0]="                              4 -> 12:25 - 13:35";
-    datos[4][0]="                              5 -> 13:40 - 14:30";
-    datos[5][0]="                              6 -> 16:00 - 16:50";
-    datos[6][0]="                              7 -> 16:55 - 17:45";
-    datos[7][0]="                              8 -> 17:50 - 18:40";
-    datos[8][0]="                              9 -> 18:45 - 19:35";
-    int contador=0;    
-   
-        System.out.println(vClase.size());
-    for(Clase c:vClase){
-        if(jCalendar1.getCalendar().){
-        datos[c.getHora()-1][Integer.parseInt(c.getFecha().substring(8, 10))-(Integer.parseInt(dia)-1)] =  c.getAlumnodni();
-        }
+    private String calcularFecha(String fecha, int dia){
+     Calendar calendar = Calendar.getInstance();
+        calendar.setTime(java.sql.Date.valueOf(fecha));
+        calendar.add(Calendar.DAY_OF_YEAR, dia);
+
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        return  formato.format(calendar.getTime());
     }
-    modelo= new DefaultTableModel(datos,cabecera);
-        jTableclases.setModel(modelo);
-        
-        
+    public void mostrarTabla(String fecha) {
+        DefaultTableModel modelo;
        
+
+        String cabecera[] = {"", calcularFecha(fecha, 0).substring(8, 10), calcularFecha(fecha, 1).substring(8, 10), calcularFecha(fecha, 2).substring(8, 10), calcularFecha(fecha, 3).substring(8, 10), calcularFecha(fecha, 4).substring(8, 10)};
+        String datos[][] = new String[9][6];
+        datos[0][0] = "                              1 -> 8:45 - 9:35";
+        datos[1][0] = "                              2 -> 9:40 - 10:30";
+        datos[2][0] = "                              3 -> 10:35 - 11:25";
+        datos[3][0] = "                              4 -> 12:25 - 13:35";
+        datos[4][0] = "                              5 -> 13:40 - 14:30";
+        datos[5][0] = "                              6 -> 16:00 - 16:50";
+        datos[6][0] = "                              7 -> 16:55 - 17:45";
+        datos[7][0] = "                              8 -> 17:50 - 18:40";
+        datos[8][0] = "                              9 -> 18:45 - 19:35";
+        int contador = 0;
+        
+
+        for (Clase c : vClase) {
+            if ((jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) - (Integer.parseInt(fecha.substring(8, 10)) - 1)) > 0) {
+                datos[c.getHora() - 1][jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) -(Integer.parseInt(fecha.substring(8, 10)) - 1)  +Integer.parseInt(c.getFecha().substring(8, 10)) ] = c.getAlumnodni();
+            } else {
+                datos[c.getHora() - 1][Integer.parseInt(c.getFecha().substring(8, 10)) - (Integer.parseInt(fecha.substring(8, 10)) - 1)] = c.getAlumnodni();
+            }
+        }
+        modelo = new DefaultTableModel(datos, cabecera);
+        jTableclases.setModel(modelo);
+
     }
+
     public String devolverdniVCalse(int hora, String dia) {
-        String dni="";
+        String dni = "";
         /*if(vClase.size()>i){
             return vClase.get(i).getAlumnodni();
         }*/
-        for(Clase c:vClase){
-            if (c.getHora()==hora && c.getFecha().substring(8, 10).equalsIgnoreCase(dia)){
+        for (Clase c : vClase) {
+            if (c.getHora() == hora && c.getFecha().substring(8, 10).equalsIgnoreCase(dia)) {
                 return c.getAlumnodni();
             }
         }
         return dni;
-        
+
     }
-    public  void selecionarDia() {
-    if (jCalendar1.getCalendar() != null) {
+
+    public void selecionarDia() {
+        if (jCalendar1.getCalendar() != null) {
             Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -530,16 +540,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
             String dia = fechaS.substring(8, 10);
             vClase = con.consultarClases(fechaS);
-            mostrarTabla(dia);
+            mostrarTabla(fechaS);
 
         }
     }
-    public  String calculardia(String dia, int n) {
-    int diaInt = Integer.parseInt(dia)+n;
-    dia=Integer.toString(diaInt);
-        return dia;
-    }
-    
+
+   
+
     private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonaborrarActionPerformed

@@ -471,7 +471,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
             Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             String fechaS = formato.format(fecha);
-            String dia = fechaS.substring(8, 10);
+            
             vClase = con.consultarClases(fechaS);
             mostrarTabla(fechaS);
 
@@ -489,8 +489,6 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }
     public void mostrarTabla(String fecha) {
         DefaultTableModel modelo;
-       
-
         String cabecera[] = {"", calcularFecha(fecha, 0).substring(8, 10), calcularFecha(fecha, 1).substring(8, 10), calcularFecha(fecha, 2).substring(8, 10), calcularFecha(fecha, 3).substring(8, 10), calcularFecha(fecha, 4).substring(8, 10)};
         String datos[][] = new String[9][6];
         datos[0][0] = "                              1 -> 8:45 - 9:35";
@@ -503,11 +501,9 @@ public class VentanaProfesor extends javax.swing.JFrame {
         datos[7][0] = "                              8 -> 17:50 - 18:40";
         datos[8][0] = "                              9 -> 18:45 - 19:35";
         int contador = 0;
-        
-
         for (Clase c : vClase) {
-            if ((jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) - (Integer.parseInt(fecha.substring(8, 10)) - 1)) > 0) {
-                datos[c.getHora() - 1][jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) -(Integer.parseInt(fecha.substring(8, 10)) - 1)  +Integer.parseInt(c.getFecha().substring(8, 10)) ] = c.getAlumnodni();
+            if ((jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) - (Integer.parseInt(fecha.substring(8, 10)) - 1)) <= 0) {
+                datos[c.getHora() - 1][jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) - (Integer.parseInt(fecha.substring(8, 10)) - 1)  + Integer.parseInt(c.getFecha().substring(8, 10)) ] = c.getAlumnodni();
             } else {
                 datos[c.getHora() - 1][Integer.parseInt(c.getFecha().substring(8, 10)) - (Integer.parseInt(fecha.substring(8, 10)) - 1)] = c.getAlumnodni();
             }

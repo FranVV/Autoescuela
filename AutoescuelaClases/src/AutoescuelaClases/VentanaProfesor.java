@@ -478,7 +478,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
             Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             String fechaS = formato.format(fecha);
-            String dia = fechaS.substring(8, 10);
+            
             vClase = con.consultarClases(fechaS);
             mostrarTabla(fechaS);
 

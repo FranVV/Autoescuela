@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- holaa*/
+ */
 package AutoescuelaClases;
 
 import BBDD.Conexion;
@@ -11,8 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -478,7 +476,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
             Date fecha = this.jCalendar1.getCalendar().getTime();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             String fechaS = formato.format(fecha);
-            
+
             vClase = con.consultarClases(fechaS);
             mostrarTabla(fechaS);
 
@@ -486,16 +484,17 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
-    private String calcularFecha(String fecha, int dia){
-     Calendar calendar = Calendar.getInstance();
+    private String calcularFecha(String fecha, int dia) {
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(java.sql.Date.valueOf(fecha));
         calendar.add(Calendar.DAY_OF_YEAR, dia);
 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        return  formato.format(calendar.getTime());
+        return formato.format(calendar.getTime());
     }
+
     public void mostrarTabla(String fecha) {
-        
+
         DefaultTableModel modelo;
         String cabecera[] = {"", calcularFecha(fecha, 0).substring(8, 10), calcularFecha(fecha, 1).substring(8, 10), calcularFecha(fecha, 2).substring(8, 10), calcularFecha(fecha, 3).substring(8, 10), calcularFecha(fecha, 4).substring(8, 10)};
         String datos[][] = new String[9][6];
@@ -508,24 +507,23 @@ public class VentanaProfesor extends javax.swing.JFrame {
         datos[6][0] = "                              7 -> 16:55 - 17:45";
         datos[7][0] = "                              8 -> 17:50 - 18:40";
         datos[8][0] = "                              9 -> 18:45 - 19:35";
-        
-       
+
         for (Clase c : vClase) {
-              datos[c.getHora() - 1][numeroDiasEntreDosFechas (java.sql.Date.valueOf(fecha), java.sql.Date.valueOf(c.getFecha()))+1] = c.getAlumnodni();
+            datos[c.getHora() - 1][numeroDiasEntreDosFechas(java.sql.Date.valueOf(fecha), java.sql.Date.valueOf(c.getFecha())) + 1] = c.getAlumnodni();
         }
         modelo = new DefaultTableModel(datos, cabecera);
         jTableclases.setModel(modelo);
 
     }
 
-    private int numeroDiasEntreDosFechas(Date fecha1, Date fecha2){
-     long startTime = fecha1.getTime();
-     long endTime = fecha2.getTime();
-     long diffTime = endTime - startTime;
-     long diffDays = diffTime / (1000 * 60 * 60 * 24);
-     return (int)diffDays;
-}
-    
+    private int numeroDiasEntreDosFechas(Date fecha1, Date fecha2) {
+        long startTime = fecha1.getTime();
+        long endTime = fecha2.getTime();
+        long diffTime = endTime - startTime;
+        long diffDays = diffTime / (1000 * 60 * 60 * 24);
+        return (int) diffDays;
+    }
+
     public String devolverdniVCalse(int hora, String dia) {
         String dni = "";
         /*if(vClase.size()>i){
@@ -554,16 +552,21 @@ public class VentanaProfesor extends javax.swing.JFrame {
         }
     }
 
-   
 
     private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
-       if(jComboBoxselecionahora1.getSelectedItem().toString()!=null && !jComboBoxselecionahora1.getSelectedItem().toString().equalsIgnoreCase("clases")){
-           String clases = jComboBoxselecionahora1.getSelectedItem().toString();
-           String fecha= clases.substring(0, 10);
-           int hora=Integer.parseInt(clases.substring(11,12));
-       }else{
-           JOptionPane.showMessageDialog(null,"No hay fecha seleccionada");
-       }     
+        if (jComboBoxselecionahora1.getSelectedItem().toString() != null && !jComboBoxselecionahora1.getSelectedItem().toString().equalsIgnoreCase("clases")) {
+            String clases = jComboBoxselecionahora1.getSelectedItem().toString();
+            String fecha = clases.substring(0, 10);
+            int hora = Integer.parseInt(clases.substring(11, 12));
+            if (con.eliminarClase("clase", "fecha", fecha, "hora", hora)) {
+                VentanaProfesor ventan = new VentanaProfesor();
+                ventan.setLocationRelativeTo(this);
+                ventan.setVisible(true);
+                this.dispose();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay fecha seleccionada");
+        }
     }//GEN-LAST:event_jButtonaborrarActionPerformed
 
     /**

@@ -301,6 +301,27 @@ public class Conexion {
         
         return bandera ; 
     }
+    public boolean eliminarClase( String tabla,String condicion,String dato,String condicion2,int dato2) {
+        boolean bandera= false;
+        try {
+            conectar();
+            PreparedStatement pt;
+            
+            pt = con.prepareStatement("DELETE FROM "+tabla+" WHERE "+condicion+"='"+dato+"' and "+condicion2+"="+dato2+";");
+            
+            int rs = pt.executeUpdate();
+              
+            if(rs>0){
+             bandera= true;   
+            }
+            
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al eliminar "+tabla);
+        }
+        
+        return bandera ; 
+    }
     public boolean insertarDatosVehiculo( String matricula,String modelo,int potencia, String tipo) {
         boolean bandera= false;
         try {

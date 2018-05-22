@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
@@ -41,6 +42,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
     public void configuracion() {
         con = new Conexion();
         selecionarDia();
+        jComboBoxselecionahora1.removeAllItems();
+        ArrayList<String> vClases = con.mostrarDatosClases("clase", "fecha,Hora");
+        jComboBoxselecionahora1.addItem("Clases");
+        for (int i = 0; i < vClases.size(); i++) {
+            jComboBoxselecionahora1.addItem(vClases.get(i));
+        }
         jComboBoxselecionahora.removeAllItems();
         jComboBoxselecionahora.addItem("Hora");
         jComboBoxselecionahora.addItem("1 8:45 - 9:35");
@@ -488,9 +495,8 @@ public class VentanaProfesor extends javax.swing.JFrame {
         return  formato.format(calendar.getTime());
     }
     public void mostrarTabla(String fecha) {
+        
         DefaultTableModel modelo;
-       
-
         String cabecera[] = {"", calcularFecha(fecha, 0).substring(8, 10), calcularFecha(fecha, 1).substring(8, 10), calcularFecha(fecha, 2).substring(8, 10), calcularFecha(fecha, 3).substring(8, 10), calcularFecha(fecha, 4).substring(8, 10)};
         String datos[][] = new String[9][6];
         datos[0][0] = "                              1 -> 8:45 - 9:35";
@@ -502,21 +508,24 @@ public class VentanaProfesor extends javax.swing.JFrame {
         datos[6][0] = "                              7 -> 16:55 - 17:45";
         datos[7][0] = "                              8 -> 17:50 - 18:40";
         datos[8][0] = "                              9 -> 18:45 - 19:35";
-        int contador = 0;
         
-
+       
         for (Clase c : vClase) {
-            if ((jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) - (Integer.parseInt(fecha.substring(8, 10)) - 1)) <= 0) {
-                datos[c.getHora() - 1][jCalendar1.getCalendar().getMaximum(Calendar.DAY_OF_MONTH) -(Integer.parseInt(fecha.substring(8, 10)) - 1)  +Integer.parseInt(c.getFecha().substring(8, 10)) ] = c.getAlumnodni();
-            } else {
-                datos[c.getHora() - 1][Integer.parseInt(c.getFecha().substring(8, 10)) - (Integer.parseInt(fecha.substring(8, 10)) - 1)] = c.getAlumnodni();
-            }
+              datos[c.getHora() - 1][numeroDiasEntreDosFechas (java.sql.Date.valueOf(fecha), java.sql.Date.valueOf(c.getFecha()))+1] = c.getAlumnodni();
         }
         modelo = new DefaultTableModel(datos, cabecera);
         jTableclases.setModel(modelo);
 
     }
 
+    private int numeroDiasEntreDosFechas(Date fecha1, Date fecha2){
+     long startTime = fecha1.getTime();
+     long endTime = fecha2.getTime();
+     long diffTime = endTime - startTime;
+     long diffDays = diffTime / (1000 * 60 * 60 * 24);
+     return (int)diffDays;
+}
+    
     public String devolverdniVCalse(int hora, String dia) {
         String dni = "";
         /*if(vClase.size()>i){
@@ -548,7 +557,13 @@ public class VentanaProfesor extends javax.swing.JFrame {
    
 
     private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
-        // TODO add your handling code here:
+       if(jComboBoxselecionahora1.getSelectedItem().toString()!=null && !jComboBoxselecionahora1.getSelectedItem().toString().equalsIgnoreCase("clases")){
+           String clases = jComboBoxselecionahora1.getSelectedItem().toString();
+           String fecha= clases.substring(0, 10);
+           int hora=Integer.parseInt(clases.substring(11,12));
+       }else{
+           JOptionPane.showMessageDialog(null,"No hay fecha seleccionada");
+       }     
     }//GEN-LAST:event_jButtonaborrarActionPerformed
 
     /**

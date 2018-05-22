@@ -11,6 +11,7 @@ import Clases.Alumno;
 import Clases.Clase;
 import Clases.Persona;
 import Clases.Profesor;
+import com.toedter.calendar.JCalendar;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -132,6 +133,32 @@ public class Conexion {
                             
             while (rs.next()) {
                     vMatriculas.add(rs.getString(1));
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los campos de la tabla");
+        }
+        
+        return vMatriculas ; 
+    }
+    public ArrayList<String> mostrarDatosClases( String tabla, String campo) {
+        ArrayList<String> vMatriculas = new ArrayList<>();
+        try {
+            conectar();
+            PreparedStatement pt;
+            JCalendar jCalendar1 = new JCalendar();
+           
+            Date fecha = jCalendar1.getCalendar().getTime();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaS = formato.format(fecha);
+
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where fecha>=now() ;");
+            
+            ResultSet rs = pt.executeQuery();
+                            
+            while (rs.next()) {
+                    vMatriculas.add(rs.getString(1)+" "+rs.getInt(2));
                         
             }
             desconectar();

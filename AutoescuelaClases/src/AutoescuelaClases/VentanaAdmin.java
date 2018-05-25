@@ -115,6 +115,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jTextFieldcontraseñaAlumno = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButtonañadiralumno1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -473,6 +474,13 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         jLabel2.setText("Admin");
 
+        jButtonañadiralumno1.setText("Desconectar");
+        jButtonañadiralumno1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonañadiralumno1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -484,6 +492,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonañadiralumno1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,7 +507,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonañadiralumno1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -563,6 +576,13 @@ public class VentanaAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonañadirprofesorActionPerformed
 
+    private void jButtonañadiralumno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadiralumno1ActionPerformed
+        Login ventan = new Login();
+        ventan.setLocationRelativeTo(this);
+        ventan.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonañadiralumno1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -601,6 +621,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupadmin;
     private javax.swing.JButton jButtonañadiralumno;
+    private javax.swing.JButton jButtonañadiralumno1;
     private javax.swing.JButton jButtonañadircoche;
     private javax.swing.JButton jButtonañadirprofesor;
     private javax.swing.JButton jButtoneliminaralumno;

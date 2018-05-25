@@ -468,7 +468,38 @@ public class VentanaProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonactualizarActionPerformed
 
     private void jButtonaconfirmareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaconfirmareActionPerformed
-
+        if (jComboBoxmatricula.getSelectedItem() != null && !jComboBoxmatricula.getSelectedItem().toString().equalsIgnoreCase("Matriculas")) {
+            String matricula = jComboBoxmatricula.getSelectedItem().toString();
+            if (jComboBoxidalumno.getSelectedItem() != null && !jComboBoxidalumno.getSelectedItem().toString().equalsIgnoreCase("Alumnos")) {
+                String idalumno = jComboBoxidalumno.getSelectedItem().toString();
+                if (jComboBoxdniProfesor.getSelectedItem() != null && !jComboBoxdniProfesor.getSelectedItem().toString().equalsIgnoreCase("Profesores")) {
+                    String dniProfesor = jComboBoxdniProfesor.getSelectedItem().toString();
+                    if (jCalendar1.getCalendar() != null) {
+                        Date fecha = this.jCalendar1.getCalendar().getTime();
+                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                        String fechaS = formato.format(fecha);
+                        if (jComboBoxselecionahora.getSelectedItem() != null && !jComboBoxselecionahora.getSelectedItem().toString().equalsIgnoreCase("Clases")) {
+                            int hora = Integer.parseInt(jComboBoxselecionahora.getSelectedItem().toString().substring(0, 1));
+                            con.insertarDatosCalse(matricula, idalumno, dniProfesor, fechaS, hora);
+                            VentanaProfesor ventan = new VentanaProfesor();
+                            ventan.setLocationRelativeTo(this);
+                            ventan.setVisible(true);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No hay hora seleccionada");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No hay fecha seleccionada");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay dni profesor seleccionada");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay Id alumno seleccionada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay matricula seleccionada");
+        }
     }//GEN-LAST:event_jButtonaconfirmareActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -481,8 +512,6 @@ public class VentanaProfesor extends javax.swing.JFrame {
             mostrarTabla(fechaS);
 
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
     private String calcularFecha(String fecha, int dia) {
         Calendar calendar = Calendar.getInstance();
@@ -509,7 +538,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
         datos[8][0] = "                              9 -> 18:45 - 19:35";
 
         for (Clase c : vClase) {
-            datos[c.getHora() - 1][numeroDiasEntreDosFechas(java.sql.Date.valueOf(fecha), java.sql.Date.valueOf(c.getFecha())) + 1] = c.getAlumnodni();
+            datos[c.getHora() - 1][numeroDiasEntreDosFechas(java.sql.Date.valueOf(fecha), java.sql.Date.valueOf(c.getFecha())) + 1] = con.consultarPersonaNombre(c.getAlumnodni());
         }
         modelo = new DefaultTableModel(datos, cabecera);
         jTableclases.setModel(modelo);

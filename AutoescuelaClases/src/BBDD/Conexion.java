@@ -84,6 +84,26 @@ public class Conexion {
         
         return encontrado ; 
     }
+    public String consultarPersonaNombre(String dniAlumno) {
+        String nombre="";
+        try {
+            PreparedStatement st;
+            conectar();
+            st = con.prepareStatement("Select nombre from persona where dni = ?;");
+            st.setString(1, dniAlumno);
+            ResultSet rs = st.executeQuery();
+                            
+            while (rs.next()) {
+                    nombre=rs.getString(1);
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los usuarios y contraseñas");
+        }
+        
+        return nombre ; 
+    }
     public ArrayList<Clase> consultarClases(String fecha) {
         ArrayList<Clase> vClase= new ArrayList<>();
         try {
@@ -329,6 +349,34 @@ public class Conexion {
             PreparedStatement pt;
             
             pt = con.prepareStatement("INSERT INTO `vehiculo`(`matricula`, `modelo`, `potencia`, `tipo`) VALUES ('"+matricula+"','"+modelo+"',"+potencia+",'"+tipo+"');");
+            
+            int rs = pt.executeUpdate();
+              
+            if(rs>0){
+             bandera= true;   
+            }
+            
+            desconectar();
+        } catch (SQLException ex) { 
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bandera ; 
+    }
+    public boolean insertarDatosCalse( String matricula,String idAlumno,String dniProfesor, String fecha, int Hora) {
+        boolean bandera= false;
+        String dniAlumno = null;
+        try {
+            conectar();
+            PreparedStatement pt;
+            pt = con.prepareStatement("Select dni from persona where id='"+idAlumno+"';");
+            
+            ResultSet rs1 = pt.executeQuery();
+            while(rs1.next()){
+                dniAlumno= rs1.getString(1);
+            }
+            
+            pt = con.prepareStatement("INSERT INTO `clase`(`fecha`, `matricula`, `dniAlumno`, `dniProfesor`, `asignada`, `Hora`) VALUES ('"+fecha+"','"+matricula+"','"+dniAlumno+"','"+dniProfesor+"',True,"+Hora+");");
             
             int rs = pt.executeUpdate();
               

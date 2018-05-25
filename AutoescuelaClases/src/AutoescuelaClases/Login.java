@@ -8,6 +8,7 @@ package AutoescuelaClases;
 import BBDD.Conexion;
 import Clases.Persona;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,6 +139,10 @@ public class Login extends javax.swing.JFrame {
                 ventana.setLocationRelativeTo(this);
                 ventana.setVisible(true);
                 this.dispose();
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorectos");
+                
             }
          }    
 

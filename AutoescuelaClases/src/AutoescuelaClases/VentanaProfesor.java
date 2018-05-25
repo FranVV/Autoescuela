@@ -555,9 +555,7 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
     public String devolverdniVCalse(int hora, String dia) {
         String dni = "";
-        /*if(vClase.size()>i){
-            return vClase.get(i).getAlumnodni();
-        }*/
+        
         for (Clase c : vClase) {
             if (c.getHora() == hora && c.getFecha().substring(8, 10).equalsIgnoreCase(dia)) {
                 return c.getAlumnodni();

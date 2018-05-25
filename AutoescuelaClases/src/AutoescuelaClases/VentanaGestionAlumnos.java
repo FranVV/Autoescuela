@@ -217,6 +217,7 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
 
     private void jTextFieldbuscarAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldbuscarAlumnoFocusLost
         String nombre = jTextFieldbuscarAlumno.getText();
+        
         jTextAreamostraalumno.setText(con.mostrarDatosTablaporCaposconcretosNombreAlumno("persona", "*", nombre).toString());
     }//GEN-LAST:event_jTextFieldbuscarAlumnoFocusLost
 

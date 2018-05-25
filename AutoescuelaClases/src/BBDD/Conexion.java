@@ -200,7 +200,8 @@ public class Conexion {
                             
             while (rs.next()) {
                 if(rs.getString(6).equalsIgnoreCase("Alumno")){
-                    vMatriculas.add("Nombre: "+rs.getString(1)+" | ID: "+rs.getString(8));
+                    
+                    vMatriculas.add("Nombre: "+rs.getString(1)+" | ID: "+rs.getString(8)+" | DNI: "+rs.getString(2)+" |Fecha_Nacimiento: "+rs.getString(3)+" | Permisos_Posesion: "+rs.getString(4)+" | TLF: "+rs.getString(5)+" | Correo: "+rs.getString(7)+" | Teorica: "+rs.getBoolean(9)+" | Practica: "+rs.getString(10));
                 } else{
                     vMatriculas.add("EL nombre introducido no"+"\n" +" pertenece a un alumno");
                 } 

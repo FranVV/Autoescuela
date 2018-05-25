@@ -88,19 +88,19 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabelmatricula" min="-2" pref="61" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldmatricula" min="-2" pref="61" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldmatricula" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldmodelo" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="jTextFieldmodelo" min="-2" pref="91" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="51" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldpotencia" min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="jTextFieldpotencia" min="-2" pref="73" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldtipo" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="jTextFieldtipo" min="-2" pref="83" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButtonañadircoche" min="-2" pref="69" max="-2" attributes="0"/>
                       </Group>
@@ -113,19 +113,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelmatricula" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldmatricula" pref="26" max="32767" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldmodelo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldpotencia" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldtipo" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jButtonañadircoche" alignment="3" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jButtonañadircoche" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldpotencia" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldmodelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldmatricula" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldtipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabelmatricula" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jComboBoxmatricula" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,6 +156,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldmatricula">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldmatriculaFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -165,6 +166,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldmodelo">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldmodeloFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldmodeloActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -182,6 +187,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldpotencia">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldpotenciaFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -189,6 +197,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldtipo">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldtipoFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -215,15 +226,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="jTextFieldnombreprofesor" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jTextFieldnombreprofesor" min="-2" pref="141" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFielddni" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jTextFielddni" min="-2" pref="85" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel17" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="jLabel17" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldnacimientoProfesor" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="jTextFieldnacimientoProfesor" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" pref="66" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -236,6 +247,8 @@
                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextFieldcorreoprofesor" min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel39" min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel23" min="-2" pref="35" max="-2" attributes="0"/>
@@ -245,9 +258,7 @@
                           <Component id="jButtoneliminarprofesor" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel39" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jTextFieldcontraseñaprofesor" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
@@ -265,41 +276,40 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextFieldnombreprofesor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFielddni" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldnacimientoProfesor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jRadioButtontrueprofesor" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonañadirprofesor" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jRadioButtontrueprofesor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonfalseprofesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonañadirprofesor" alignment="3" pref="0" max="32767" attributes="0"/>
+                          <Component id="jRadioButtonfalseprofesor" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabel28" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jTextFieldcorreoprofesor" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jTextFieldtlfprofesor" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldpremisosprofesor" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldcontraseñaprofesor" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel39" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldcontraseñaprofesor" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldcorreoprofesor" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jLabel39" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldnacimientoProfesor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldnombreprofesor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFielddni" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel28" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldpremisosprofesor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldtlfprofesor" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                      <Component id="jLabel23" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jComboBoxdniProfesor" alignment="3" max="32767" attributes="0"/>
-                      <Component id="jButtoneliminarprofesor" alignment="3" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel23" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBoxdniProfesor" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jButtoneliminarprofesor" alignment="3" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -329,6 +339,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldnombreprofesor">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldnombreprofesorFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -341,6 +354,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldpremisosprofesor">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldpremisosprofesorFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
@@ -348,6 +364,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldnacimientoProfesor">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldnacimientoProfesorFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
@@ -467,10 +486,6 @@
                           <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextFieldidalumno" min="-2" pref="59" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel38" min="-2" pref="70" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldcontraseñaAlumno" min="-2" pref="59" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButtonañadiralumno" min="-2" pref="69" max="-2" attributes="0"/>
                       </Group>
@@ -483,18 +498,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jLabel27" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jTextFieldcorreoalumno" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldnombrealumno" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jTextFielddnialumno" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jTextFieldtlfalumno" alignment="0" pref="23" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jLabel35" alignment="3" max="32767" attributes="0"/>
@@ -502,18 +506,26 @@
                               <Component id="jLabel33" alignment="3" max="32767" attributes="0"/>
                               <Component id="jTextFieldpermisosalumno" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jTextFieldidalumno" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel36" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldcontraseñaAlumno" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButtonañadiralumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldidalumno" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel36" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jTextFieldtlfalumno" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel27" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldcorreoalumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabel38" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jLabel13" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jTextFieldnombrealumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFielddnialumno" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="jButtonañadiralumno" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBoxidalumno" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -609,16 +621,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtoneliminaralumnoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel38">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldcontrase&#xf1;aAlumno">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldcontrase&#xf1;aAlumnoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

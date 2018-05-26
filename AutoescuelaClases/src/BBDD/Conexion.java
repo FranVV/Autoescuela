@@ -84,6 +84,28 @@ public class Conexion {
         
         return encontrado ; 
     }
+    public boolean comprobarid(String id) {
+        boolean encontrado =false;
+        try {
+            PreparedStatement st;
+            conectar();
+            st = con.prepareStatement("Select id from persona where id = ?;");
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+                            
+            while (rs.next()) {
+                    if (!rs.getString(1).equalsIgnoreCase(null)){
+                        encontrado =  true;
+                    }
+                        
+            }
+            desconectar();
+        } catch (SQLException ex) {
+            System.out.println("Fallo al consultar los usuarios y contraseñas");
+        }
+        
+        return encontrado ; 
+    }
     public String consultarPersonaNombre(String dniAlumno) {
         String nombre="";
         try {

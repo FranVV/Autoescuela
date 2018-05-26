@@ -121,7 +121,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * comprobacion en la BBDD si el usuario existe y distinge entre admin y el resto
+ * @param COmprobacion de login
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String pass = new String(jPasswordField1contraseña.getPassword());
         String nombre = jTextFieldusuario.getText();

@@ -22,6 +22,9 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
         initComponents();
         configuracion();
     }
+    /**
+     * cargar los jcombobox y establecer conexion con el servidor
+     */
     public void configuracion(){
      con= new Conexion();
         jComboBoxidalumno.removeAllItems();
@@ -214,20 +217,28 @@ public class VentanaGestionAlumnos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param busca en la bbdd en busca del nombre de usuario introducido si lo encuentra musestar la informacion de dicho alumno 
+ */
     private void jTextFieldbuscarAlumnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldbuscarAlumnoFocusLost
         String nombre = jTextFieldbuscarAlumno.getText();
-        
         jTextAreamostraalumno.setText(con.mostrarDatosTablaporCaposconcretosNombreAlumno("persona", "*", nombre).toString());
     }//GEN-LAST:event_jTextFieldbuscarAlumnoFocusLost
-
+    /**
+     * 
+     * @param cerrar ventana actual e ir a la de profesor 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         VentanaProfesor ventana = new VentanaProfesor();
         ventana.setLocationRelativeTo(this);
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+/**
+ * 
+ * @param asignacion de si el alumno a aprobado la teorica 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        boolean teorica= false;
        boolean practica= false;

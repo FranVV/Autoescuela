@@ -589,12 +589,18 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void jButtonañadircocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadircocheActionPerformed
         if(con.insertarDatosVehiculo(jTextFieldmatricula.getText(), jTextFieldmodelo.getText(), Integer.valueOf(jTextFieldpotencia.getText()), jTextFieldtipo.getText())){
             configuracion();
+            JOptionPane.showMessageDialog(this, "Vehiculo Insertado con exito");
+        }else{
+            JOptionPane.showMessageDialog(this, "Fallo al insertar un vehiculo");
         }
     }//GEN-LAST:event_jButtonañadircocheActionPerformed
 
     private void jButtonañadiralumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadiralumnoActionPerformed
-        if(con.insertarDatosPersona(jTextFieldnombrealumno.getText(), jTextFielddnialumno.getText(), jTextFieldnacimientoalumno.getText(), jTextFieldpermisosalumno.getText(),Integer.valueOf(jTextFieldtlfalumno.getText()) , "Alumno", jTextFieldcorreoalumno.getText(), Integer.valueOf(jTextFieldidalumno.getText()), false,"")){
-            configuracion();
+        if(con.insertarDatosPersona(jTextFieldnombrealumno.getText(), jTextFielddnialumno.getText(), jTextFieldnacimientoalumno.getText(), jTextFieldpermisosalumno.getText(),Integer.valueOf(jTextFieldtlfalumno.getText()) , "Alumno", jTextFieldcorreoalumno.getText(), Integer.valueOf(jTextFieldidalumno.getText()), false,"1")){
+            configuracion(); 
+            JOptionPane.showMessageDialog(this, "Alumno Insertado con exito");
+        }else{
+            JOptionPane.showMessageDialog(this, "Fallo al insertar un Alumno");
         }
     }//GEN-LAST:event_jButtonañadiralumnoActionPerformed
 
@@ -619,7 +625,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
             bandera = false;
         }
         if(con.insertarDatosPersona(jTextFieldnombreprofesor.getText(), jTextFielddni.getText(), jTextFieldnacimientoProfesor.getText(), jTextFieldpremisosprofesor.getText(),Integer.valueOf(jTextFieldtlfprofesor.getText()), "Profesor", jTextFieldcorreoprofesor.getText(), 0, bandera, jTextFieldcontraseñaprofesor.getText())){
-            configuracion();
+            configuracion(); JOptionPane.showMessageDialog(this, "profesor Insertado con exito");
+        }else{
+            JOptionPane.showMessageDialog(this, "Fallo al insertar un profesor");
         }
     }//GEN-LAST:event_jButtonañadirprofesorActionPerformed
 

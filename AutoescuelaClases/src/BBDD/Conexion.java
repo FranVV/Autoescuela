@@ -195,7 +195,7 @@ public class Conexion {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             String fechaS = formato.format(fecha);
 
-            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where fecha>=now() ;");
+            pt = con.prepareStatement("Select "+campo+" from "+tabla+" where fecha>=now()- (1100000) ;");
             
             ResultSet rs = pt.executeQuery();
                             
@@ -422,7 +422,7 @@ public class Conexion {
             conectar();
             PreparedStatement pt;
             
-            pt = con.prepareStatement("INSERT INTO `persona`(`nombre`, `dni`, `fechaNacimiento`, `permisosPosee`, `nTelefono`, `tipo`, `correo`, `id`, `admin`, `contraseña`, `teorica`, `practica`) VALUES ('"+nombre+"','"+dni+"','"+fechanacimiento+"','"+permisos+"',"+tlf+",'"+tipo+"','"+correo+"',"+id+","+admin+",'"+contraseña+"',false,flase);");
+            pt = con.prepareStatement("INSERT INTO `persona`(`nombre`, `dni`, `fechaNacimiento`, `permisosPosee`, `nTelefono`, `tipo`, `correo`, `id`, `admin`, `contraseña`, `teorica`, `practica`) VALUES ('"+nombre+"','"+dni+"','"+fechanacimiento+"','"+permisos+"',"+tlf+",'"+tipo+"','"+correo+"',"+id+","+admin+",'"+contraseña+"',false,false);");
             
             int rs = pt.executeUpdate();
               

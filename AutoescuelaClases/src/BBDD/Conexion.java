@@ -62,6 +62,12 @@ public class Conexion {
             System.out.println("Fallo al desconectar de la BBDD");
         }
     }
+    /**
+     * 
+     * @param nombre Strin del nombre de la persona
+     * @param pass string de la contraseña de la persona
+     * @return true si la contraseña y usuario coinciden sino false
+     */
     public boolean consultarPersonasUsuarioContraseña(String nombre, String pass) {
         boolean encontrado =false;
         try {
@@ -84,6 +90,11 @@ public class Conexion {
         
         return encontrado ; 
     }
+    /**
+     * 
+     * @param id String 
+     * @return comprueba si el id se encuentra en la bbdd si lo esta devuelde true si no false
+     */
     public boolean comprobarid(String id) {
         boolean encontrado =false;
         try {
@@ -106,6 +117,12 @@ public class Conexion {
         
         return encontrado ; 
     }
+    
+    /**
+     * 
+     * @param dniAlumno String
+     * @return devuelve el nombre 
+     */
     public String consultarPersonaNombre(String dniAlumno) {
         String nombre="";
         try {
@@ -126,6 +143,11 @@ public class Conexion {
         
         return nombre ; 
     }
+    /**
+     * 
+     * @param fecha String 
+     * @return devuelve las clases que hay entre la fecha pasada + 4 dias
+     */
     public ArrayList<Clase> consultarClases(String fecha) {
         ArrayList<Clase> vClase= new ArrayList<>();
         try {
@@ -163,6 +185,12 @@ public class Conexion {
     dia=Integer.toString(diaInt);
         return dia;
     }
+    /**
+     * 
+     * @param tabla String 
+     * @param campo String
+     * @return devuelve el datos selecionado en un ArrayList
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretos( String tabla, String campo) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -184,6 +212,12 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String  
+     * @param campo String
+     * @return muestra los datos de clases a partir del dia en curso
+     */
     public ArrayList<String> mostrarDatosClases( String tabla, String campo) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -210,6 +244,13 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String
+     * @param campo String
+     * @param nombre String
+     * @return mostrar datos por nombre 
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretosNombreAlumno( String tabla, String campo, String nombre) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -235,6 +276,13 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String
+     * @param campo String
+     * @param nombre String
+     * @return mostrar los datos del profesor nombre y dni
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretosNombreProfesor( String tabla, String campo, String nombre) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -260,6 +308,13 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String
+     * @param campo String
+     * @param matricula String
+     * @return devuelve los con una matricula concreta
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretosporMatricula( String tabla, String campo, String matricula) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -281,6 +336,13 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String
+     * @param campo String
+     * @param condicion String
+     * @return motrar los datos pr tipo 
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretosmasTipo( String tabla, String campo, String condicion) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -302,6 +364,14 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     *  @param tabla String
+     * @param campo String
+     * @param condicion String
+     * @param condicion2 boolean
+     * @return devuelde los datos filtrando pro tipo y teoria
+     */
     public ArrayList<String> mostrarDatosTablaporCaposconcretosmasTipoTeorica( String tabla, String campo, String condicion, boolean condicion2) {
         ArrayList<String> vMatriculas = new ArrayList<>();
         try {
@@ -323,6 +393,13 @@ public class Conexion {
         
         return vMatriculas ; 
     }
+    /**
+     * 
+     * @param tabla String
+     * @param condicion String
+     * @param dato String
+     * @return eliminacion de datos 
+     */
     public boolean eliminar( String tabla,String condicion,String dato) {
         boolean bandera= false;
         try {
@@ -343,7 +420,15 @@ public class Conexion {
         }
         
         return bandera ; 
-    }
+    }/**
+     * 
+     * @param tabla String
+     * @param condicion String
+     * @param dato String
+     * @param condicion2 String
+     * @param dato2 String
+     * @return  true si elimna el dato y fglase sino
+     */
     public boolean eliminarClase( String tabla,String condicion,String dato,String condicion2,int dato2) {
         boolean bandera= false;
         try {
@@ -365,6 +450,14 @@ public class Conexion {
         
         return bandera ; 
     }
+    /**
+     * 
+     * @param matricula pra coche moto camion
+     * @param modelo  para coche moto camion
+     * @param potencia para moto 
+     * @param tipo para camion
+     * @return  true si inserta el dato y fglase sino de vehiculo
+     */
     public boolean insertarDatosVehiculo( String matricula,String modelo,int potencia, String tipo) {
         boolean bandera= false;
         try {
@@ -386,6 +479,15 @@ public class Conexion {
         
         return bandera ; 
     }
+    /**
+     * 
+     * @param matricula String
+     * @param idAlumno String
+     * @param dniProfesor String
+     * @param fecha String
+     * @param Hora int
+     * @return  true si inserta el dato y fglase sino de clase
+     */
     public boolean insertarDatosCalse( String matricula,String idAlumno,String dniProfesor, String fecha, int Hora) {
         boolean bandera= false;
         String dniAlumno = null;
@@ -415,7 +517,20 @@ public class Conexion {
         return bandera ; 
     }
    
-    
+    /**
+     * 
+     * @param nombre String
+     * @param dni String
+     * @param fechanacimiento String
+     * @param permisos String
+     * @param tlf int
+     * @param tipo String
+     * @param correo String
+     * @param id String
+     * @param admin boolean
+     * @param contraseña String
+     * @return  true si inserta el dato y fglase sino de persona
+     */
     public boolean insertarDatosPersona( String nombre,String dni,String fechanacimiento, String permisos,int tlf,String tipo,String correo,int id,boolean admin,String contraseña) {
         boolean bandera= false;
         try {
@@ -437,7 +552,13 @@ public class Conexion {
         
         return bandera ; 
     }
-    
+    /**
+     * 
+     * @param teorica String
+     * @param practica String
+     * @param id String
+     * @return  true si aptualiza el dato y fglase sino de alumno
+     */
     public boolean updateAlumnoTeoricaPractica( boolean teorica,boolean practica, int id) {
         boolean bandera= false;
         try {

@@ -36,7 +36,9 @@ public class VentanaProfesor extends javax.swing.JFrame {
         initComponents();
         configuracion();
     }
-
+/**
+ * cargar todos los jcombobox + la tabla
+ */
     public void configuracion() {
         con = new Conexion();
         selecionarDia();
@@ -459,14 +461,20 @@ public class VentanaProfesor extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    /**
+     * 
+     * @param  
+     */
     private void jButtonactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonactualizarActionPerformed
         VentanaProfesor ventan = new VentanaProfesor();
         ventan.setLocationRelativeTo(this);
         ventan.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonactualizarActionPerformed
-
+/**
+ * 
+ * @param comprobacion de que todos los dattos para insertar una clase estan selecionados 
+ */
     private void jButtonaconfirmareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaconfirmareActionPerformed
         if (jComboBoxmatricula.getSelectedItem() != null && !jComboBoxmatricula.getSelectedItem().toString().equalsIgnoreCase("Matriculas")) {
             String matricula = jComboBoxmatricula.getSelectedItem().toString();
@@ -501,7 +509,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay matricula seleccionada");
         }
     }//GEN-LAST:event_jButtonaconfirmareActionPerformed
-
+/**
+ * 
+ * @param evt cambia los dias que se muestran en la tabla al seleccionar otro dia
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jCalendar1.getCalendar() != null) {
             Date fecha = this.jCalendar1.getCalendar().getTime();
@@ -513,6 +524,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+    /**
+     * 
+     * @param fecha sele para un String de fecha
+     * @param dia selepara un int del dia
+     * @return debuelve la fecha con los dias sumados en string
+     */
     private String calcularFecha(String fecha, int dia) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(java.sql.Date.valueOf(fecha));
@@ -521,7 +538,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         return formato.format(calendar.getTime());
     }
-
+/**
+ * 
+ * @param   fecha la cual sirve para poner cada ato en su sitio 
+ */
     public void mostrarTabla(String fecha) {
 
         DefaultTableModel modelo;
@@ -544,7 +564,12 @@ public class VentanaProfesor extends javax.swing.JFrame {
         jTableclases.setModel(modelo);
 
     }
-
+    /**
+     * resta dso fechas
+     * @param fecha1 Date
+     * @param fecha2 Date
+     * @return devuelde un entero con la diferencia de dias entre las dos fechas
+     */
     private int numeroDiasEntreDosFechas(Date fecha1, Date fecha2) {
         long startTime = fecha1.getTime();
         long endTime = fecha2.getTime();
@@ -564,7 +589,9 @@ public class VentanaProfesor extends javax.swing.JFrame {
         return dni;
 
     }
-
+    /**
+     * muestra el dia en curso en la tabla
+     */
     public void selecionarDia() {
         if (jCalendar1.getCalendar() != null) {
             Date fecha = this.jCalendar1.getCalendar().getTime();
@@ -579,7 +606,10 @@ public class VentanaProfesor extends javax.swing.JFrame {
         }
     }
 
-
+/**
+ * 
+ * @param elimina una clase de la bbdd 
+ */
     private void jButtonaborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonaborrarActionPerformed
         if (jComboBoxselecionahora1.getSelectedItem().toString() != null && !jComboBoxselecionahora1.getSelectedItem().toString().equalsIgnoreCase("clases")) {
             String clases = jComboBoxselecionahora1.getSelectedItem().toString();

@@ -27,6 +27,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
         configuracion();
         
     }
+    /**
+     * estavlecer conexion con el servidor y cargar jcomboBox
+     */
     public void configuracion(){
      con= new Conexion();
      jComboBoxmatricula.removeAllItems();
@@ -563,7 +566,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param elimina un vehiculo selecionado en una lista 
+     */
     private void jButtoneliminarcocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoneliminarcocheActionPerformed
         String matricula=jComboBoxmatricula.getSelectedItem().toString();
         if(con.eliminar("vehiculo","matricula",matricula)){
@@ -571,21 +577,30 @@ public class VentanaAdmin extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_jButtoneliminarcocheActionPerformed
-
+    /**
+     * 
+     * @param elimina un profesor selecionado en una lista 
+     */
     private void jButtoneliminarprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoneliminarprofesorActionPerformed
        String dniP=jComboBoxdniProfesor.getSelectedItem().toString();
         if(con.eliminar("persona","dni",dniP)){
              configuracion();
         }
     }//GEN-LAST:event_jButtoneliminarprofesorActionPerformed
-
+    /**
+     * 
+     * @param elimina un alumno selecionado en una lista 
+     */
     private void jButtoneliminaralumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoneliminaralumnoActionPerformed
         String idA=jComboBoxidalumno.getSelectedItem().toString();
         if(con.eliminar("persona","id",idA)){
              configuracion();
         }
     }//GEN-LAST:event_jButtoneliminaralumnoActionPerformed
-
+    /**
+     * 
+     * @param evt añadir un vehiculo a la bbdd
+     */
     private void jButtonañadircocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadircocheActionPerformed
         if(con.insertarDatosVehiculo(jTextFieldmatricula.getText(), jTextFieldmodelo.getText(), Integer.valueOf(jTextFieldpotencia.getText()), jTextFieldtipo.getText())){
             configuracion();
@@ -594,7 +609,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fallo al insertar un vehiculo");
         }
     }//GEN-LAST:event_jButtonañadircocheActionPerformed
-
+    /**
+     * 
+     * @param evt añadir un alumno a la bbdd
+     */
     private void jButtonañadiralumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadiralumnoActionPerformed
         if(con.insertarDatosPersona(jTextFieldnombrealumno.getText(), jTextFielddnialumno.getText(), jTextFieldnacimientoalumno.getText(), jTextFieldpermisosalumno.getText(),Integer.valueOf(jTextFieldtlfalumno.getText()) , "Alumno", jTextFieldcorreoalumno.getText(), Integer.valueOf(jTextFieldidalumno.getText()), false,"1")){
             configuracion(); 
@@ -607,7 +625,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void jTextFieldcontraseñaprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldcontraseñaprofesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldcontraseñaprofesorActionPerformed
-
+    /**
+     * 
+     * @param comprovacion de fecha  
+     */
     private void jTextFieldnacimientoalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnacimientoalumnoActionPerformed
         Pattern p = Pattern.compile("\\d{4}/\\d{2}/\\d{2}");
         Matcher m = p.matcher(jTextFieldnacimientoalumno.getText());
@@ -616,7 +637,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
             jTextFieldnacimientoalumno.setText("");
         }
     }//GEN-LAST:event_jTextFieldnacimientoalumnoActionPerformed
-
+    /**
+     * 
+     * @param evt añadir un profesor a la bbdd
+     */
     private void jButtonañadirprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonañadirprofesorActionPerformed
         boolean bandera;
         if(jRadioButtontrueprofesor.isEnabled()){
